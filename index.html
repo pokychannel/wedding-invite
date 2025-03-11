@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f6f2;
+        }
+
+        .card {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: max-height 0.4s ease-in-out;
+            overflow: hidden;
+            max-height: 80px;
+        }
+
+        .card-content {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .card.open {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>You're Invited!</h1>
+    <div class="card" onclick="toggleCard()">
+        <h2>Click to Open</h2>
+        <div class="card-content">
+            <p>Join us for our special day on **[Wedding Date]** at **[Venue Name]**.</p>
+            <p>We can't wait to celebrate with you!</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleCard() {
+            const card = document.querySelector('.card');
+            const content = document.querySelector('.card-content');
+            
+            card.classList.toggle('open');
+            if (card.classList.contains('open')) {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
