@@ -65,8 +65,8 @@
             z-index: 1;
         }
 
-        .letter h2, .letter p {
-            visibility: hidden; /* Text is hidden until the letter is fully out */
+        .letter-content {
+            visibility: hidden;
         }
 
         /* Envelope opening animations */
@@ -75,13 +75,12 @@
         }
 
         .open .letter {
-            top: 10%;
+            top: -60%; /* Moves above the envelope */
             opacity: 1;
         }
 
-        /* Reveal text only when the letter has fully emerged */
-        .open .letter h2,
-        .open .letter p {
+        /* Reveal text only when the letter is fully above the envelope */
+        .open .letter-content {
             visibility: visible;
         }
 
@@ -94,15 +93,26 @@
             <div class="top-flap"></div>
         </div>
         <div class="letter">
-            <h2>You're Invited!</h2>
-            <p>Join us on **[Wedding Date]** at **[Venue Name]**.</p>
-            <p>We can't wait to celebrate with you!</p>
+            <div class="letter-content">
+                <h2>You're Invited!</h2>
+                <p>Join us on **[Wedding Date]** at **[Venue Name]**.</p>
+                <p>We can't wait to celebrate with you!</p>
+            </div>
         </div>
     </div>
 
     <script>
         function toggleEnvelope() {
-            document.querySelector('.container').classList.toggle('open');
+            const container = document.querySelector('.container');
+            container.classList.toggle('open');
+
+            if (container.classList.contains('open')) {
+                setTimeout(() => {
+                    document.querySelector('.letter-content').style.visibility = 'visible';
+                }, 600); // Wait for the letter to move up before showing text
+            } else {
+                document.querySelector('.letter-content').style.visibility = 'hidden';
+            }
         }
     </script>
 
