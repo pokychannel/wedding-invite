@@ -23,28 +23,17 @@
             cursor: pointer;
         }
 
-        .envelope {
+        /* Back part of the envelope */
+        .envelope-back {
             position: absolute;
             width: 100%;
             height: 100%;
             background-color: #e0a899;
             border-radius: 10px;
-            overflow: hidden;
             z-index: 1;
         }
 
-        .top-flap {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 50%;
-            background-color: #d48b72;
-            clip-path: polygon(0 0, 100% 0, 50% 100%);
-            transition: transform 0.6s ease-in-out;
-            transform-origin: top;
-            z-index: 3;
-        }
-
+        /* The letter, initially inside the envelope */
         .letter {
             position: absolute;
             width: 90%;
@@ -55,7 +44,7 @@
             text-align: center;
             padding: 15px;
             left: 50%;
-            top: 70%;
+            top: 75%; /* Starts hidden inside */
             transform: translateX(-50%);
             transition: top 0.6s ease-in-out;
             z-index: 2;
@@ -63,6 +52,30 @@
 
         .letter-content {
             visibility: hidden;
+        }
+
+        /* Front part of the envelope (covers the letter) */
+        .envelope-front {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            background-color: #e0a899;
+            bottom: 0;
+            border-radius: 0 0 10px 10px;
+            z-index: 3; /* Covers the letter at the start */
+        }
+
+        /* Top flap */
+        .top-flap {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #d48b72;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transition: transform 0.6s ease-in-out;
+            transform-origin: top;
+            z-index: 4; /* On top of everything */
         }
 
         /* Envelope opening animations */
@@ -74,7 +87,7 @@
             top: -30%; /* Moves above the envelope */
         }
 
-        /* Reveal text only when the letter is fully above the envelope */
+        /* Reveal text only when the letter is fully above */
         .open .letter-content {
             visibility: visible;
         }
@@ -84,16 +97,16 @@
 <body>
 
     <div class="container" onclick="toggleEnvelope()">
-        <div class="envelope">
-            <div class="top-flap"></div>
-            <div class="letter">
-                <div class="letter-content">
-                    <h2>You're Invited!</h2>
-                    <p>Join us on **[Wedding Date]** at **[Venue Name]**.</p>
-                    <p>We can't wait to celebrate with you!</p>
-                </div>
+        <div class="envelope-back"></div>
+        <div class="letter">
+            <div class="letter-content">
+                <h2>You're Invited!</h2>
+                <p>Join us on **[Wedding Date]** at **[Venue Name]**.</p>
+                <p>We can't wait to celebrate with you!</p>
             </div>
         </div>
+        <div class="envelope-front"></div>
+        <div class="top-flap"></div>
     </div>
 
     <script>
@@ -104,7 +117,7 @@
             if (container.classList.contains('open')) {
                 setTimeout(() => {
                     document.querySelector('.letter-content').style.visibility = 'visible';
-                }, 600); // Wait for the letter to move up before showing text
+                }, 600); // Wait for letter to move up before showing text
             } else {
                 document.querySelector('.letter-content').style.visibility = 'hidden';
             }
