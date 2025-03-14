@@ -23,7 +23,7 @@
             cursor: pointer;
         }
 
-        /* Back part of the envelope */
+        /* Back of the envelope */
         .envelope-back {
             position: absolute;
             width: 100%;
@@ -33,7 +33,7 @@
             z-index: 1;
         }
 
-        /* The letter, initially inside the envelope */
+        /* The letter (fully hidden at the start) */
         .letter {
             position: absolute;
             width: 90%;
@@ -44,7 +44,7 @@
             text-align: center;
             padding: 15px;
             left: 50%;
-            top: 75%; /* Starts hidden inside */
+            top: 100%; /* Hidden inside envelope */
             transform: translateX(-50%);
             transition: top 0.6s ease-in-out;
             z-index: 2;
@@ -54,7 +54,7 @@
             visibility: hidden;
         }
 
-        /* Front part of the envelope (covers the letter) */
+        /* Front of the envelope (hides the letter) */
         .envelope-front {
             position: absolute;
             width: 100%;
@@ -62,7 +62,7 @@
             background-color: #e0a899;
             bottom: 0;
             border-radius: 0 0 10px 10px;
-            z-index: 3; /* Covers the letter at the start */
+            z-index: 3; /* Covers the letter */
         }
 
         /* Top flap */
@@ -78,7 +78,7 @@
             z-index: 4; /* On top of everything */
         }
 
-        /* Envelope opening animations */
+        /* Opening animations */
         .open .top-flap {
             transform: rotateX(180deg);
         }
@@ -117,7 +117,7 @@
             if (container.classList.contains('open')) {
                 setTimeout(() => {
                     document.querySelector('.letter-content').style.visibility = 'visible';
-                }, 600); // Wait for letter to move up before showing text
+                }, 600);
             } else {
                 document.querySelector('.letter-content').style.visibility = 'hidden';
             }
