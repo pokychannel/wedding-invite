@@ -5,57 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Playfair Display', serif;
             text-align: center;
             background-color: #f9f6f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card-container {
+            perspective: 1000px;
         }
 
         .card {
-            width: 300px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: white;
+            width: 320px;
+            height: 200px;
+            background: #fff;
             border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            transition: max-height 0.4s ease-in-out;
-            overflow: hidden;
-            max-height: 80px;
-        }
-
-        .card-content {
-            display: none;
-            margin-top: 15px;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease-in-out;
+            position: relative;
         }
 
         .card.open {
-            max-height: 500px;
+            transform: rotateX(180deg);
         }
+
+        .card .front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #f3e9dc;
+            color: #5c3d2e;
+            font-size: 20px;
+            font-family: 'Great Vibes', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backface-visibility: hidden;
+            border-radius: 10px;
+        }
+
+        .card .inside {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            color: #333;
+            font-size: 18px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backface-visibility: hidden;
+            transform: rotateX(180deg);
+            border-radius: 10px;
+        }
+
+        .card .inside p {
+            margin: 5px 0;
+        }
+
     </style>
 </head>
 <body>
 
-    <h1>You're Invited!</h1>
-    <div class="card" onclick="toggleCard()">
-        <h2>Click to Open</h2>
-        <div class="card-content">
-            <p>Join us for our special day on **[Wedding Date]** at **[Venue Name]**.</p>
-            <p>We can't wait to celebrate with you!</p>
+    <div class="card-container">
+        <div class="card" onclick="toggleCard()">
+            <div class="front">
+                💌 Click to Open
+            </div>
+            <div class="inside">
+                <h2>You're Invited!</h2>
+                <p>Join us for our wedding on **[Wedding Date]**</p>
+                <p>at **[Venue Name]**.</p>
+                <p>We can't wait to celebrate with you! 💕</p>
+            </div>
         </div>
     </div>
 
     <script>
         function toggleCard() {
-            const card = document.querySelector('.card');
-            const content = document.querySelector('.card-content');
-            
-            card.classList.toggle('open');
-            if (card.classList.contains('open')) {
-                content.style.display = "block";
-            } else {
-                content.style.display = "none";
-            }
+            document.querySelector('.card').classList.toggle('open');
         }
     </script>
 
