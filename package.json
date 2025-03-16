@@ -1,0 +1,29 @@
+{
+  "name": "wedding-invite",
+  "version": "1.0.0",
+  "description": "A Pen created on CodePen.",
+  "main": "index.js",
+  "scripts": {
+    "pug": "pug src/views --out dist",
+    "scss": "sass src/scss/style.scss dist/style.css",
+    "watch:pug": "pug src/views --out dist --watch",
+    "watch:scss": "sass --watch src/scss/style.scss:dist/style.css",
+    "build": "npm-run-all scss pug", 
+    "dev": "npm-run-all --parallel watch:pug watch:scss"  
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pokychannel/wedding-invite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pokychannel/wedding-invite/issues"
+  },
+  "homepage": "https://github.com/pokychannel/wedding-invite#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "pug": "^3.0.3",
+    "sass": "^1.85.1"
+  }
+}
