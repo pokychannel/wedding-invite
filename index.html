@@ -44,17 +44,17 @@
             text-align: center;
             padding: 15px;
             left: 50%;
-            top: 60%; /* Hidden inside the envelope */
-            transform: translate(-50%, 0);
+            top: 80%; /* Start fully inside the envelope */
+            transform: translateX(-50%);
             transition: top 0.6s ease-in-out;
-            z-index: 2;
+            z-index: 2; /* Below the envelope front */
         }
 
         .letter-content {
             visibility: hidden;
         }
 
-        /* Front of the envelope (hides the letter) */
+        /* Front of the envelope (hides the letter at the start) */
         .envelope-front {
             position: absolute;
             width: 100%;
@@ -62,7 +62,7 @@
             background-color: #e0a899;
             bottom: 0;
             border-radius: 0 0 10px 10px;
-            z-index: 3; /* Covers the letter */
+            z-index: 3; /* Covers the letter when closed */
         }
 
         /* Top flap */
@@ -84,7 +84,7 @@
         }
 
         .open .letter {
-            top: -20%; /* Moves the letter fully above the envelope */
+            top: -10%; /* Letter moves up from inside */
         }
 
         /* Reveal text only when the letter is fully above */
