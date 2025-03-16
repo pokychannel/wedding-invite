@@ -8,6 +8,8 @@ $desktop-width: 1024px;
 
 $color-yellow: #ffce00;
 $color-red: #ff3c41;
+$color-green: #236b3f;
+$color-blue: #332896;
 
 $font-title: 'Slackey', sans-serif;
 $font-copy: 'Karla', sans-serif;
@@ -68,7 +70,7 @@ body {
 	right: 0;
 	border-bottom: 0px solid transparent;
 	border-top: $WIDTH/$RATIO solid transparent;
-	border-right: $WIDTH solid darken($color-red, 2%);
+	border-right: $WIDTH solid darken($color-blue, 2%);
 	z-index: 1;
 }
 
@@ -76,13 +78,13 @@ body {
 	left: 0;
 	border-bottom: 0px solid transparent;
 	border-top: $WIDTH/$RATIO solid transparent;
-	border-left: $WIDTH solid darken($color-red, 6%);
+	border-left: $WIDTH solid darken($color-blue, 6%);
 	z-index: 1;
 }
 
 .flap {
 	border-right: $WIDTH/2 solid transparent;
-	border-top: ($WIDTH/2) / $RATIO solid darken($color-red, 15%);
+	border-top: ($WIDTH/2) / $RATIO solid darken($color-blue, 15%);
 	border-left: $WIDTH/2 solid transparent;
 	position: absolute;
 	left: 0;
