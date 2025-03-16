@@ -44,8 +44,8 @@
             text-align: center;
             padding: 15px;
             left: 50%;
-            top: 100%; /* Hidden inside envelope */
-            transform: translateX(-50%);
+            top: 60%; /* Hidden inside the envelope */
+            transform: translate(-50%, 0);
             transition: top 0.6s ease-in-out;
             z-index: 2;
         }
@@ -84,7 +84,7 @@
         }
 
         .open .letter {
-            top: -30%; /* Moves above the envelope */
+            top: -20%; /* Moves the letter fully above the envelope */
         }
 
         /* Reveal text only when the letter is fully above */
